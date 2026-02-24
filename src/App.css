@@ -1,36 +1,55 @@
-body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  font-family: Arial, sans-serif;
+.home {
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-.app {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.2);
+.home.light {
+  background: #f4f6f8;
+  color: #222;
+}
+
+.home.dark {
+  background: #121212;
+  color: #fff;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  margin: 20px auto;
+  padding: 25px;
+  max-width: 350px;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
-  text-align: center;
-  color: white;
+}
+
+.count {
+  font-size: 40px;
+  margin: 15px 0;
 }
 
 .btn {
   padding: 12px 20px;
-  margin: 10px;
-  border: none;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.secondary {
+  background: #f59e0b;
+  color: black;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
-.child {
-  background: #ffd86f;
-}
-
-.count {
-  font-size: 36px;
+.info {
+  opacity: 0.9;
 }
