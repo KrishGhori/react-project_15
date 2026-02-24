@@ -1,18 +1,13 @@
-import React from 'react'
+import React from "react";
 
+const ChildComponents = React.memo((props) => {
+  console.log("❗ Child Re-rendered");
 
-// if u r sending a function , then react.memo won't be able to save you to re-rendering
-const ChaildComponents = React.memo(
-    (props) => {
-    console.log("Chaild components go re-render")
   return (
-    <div>
-      <button onClick={props.handleclick}>
-        {props.buttonName}
-      </button>
-    </div>
-  )
-}
-)
+    <button className="btn child" onClick={props.handleClick}>
+      {props.buttonName}
+    </button>
+  );
+});
 
-export default ChaildComponents
+export default ChildComponents;

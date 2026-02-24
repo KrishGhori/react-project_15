@@ -1,29 +1,30 @@
-import { useCallback, useState } from 'react'
-
-import './App.css'
-import ChaildComponents from './Components/ChaildComponents';
+import { useCallback, useState } from "react";
+import "./App.css";
+import ChildComponents from "./Components/ChildComponents";
 
 function App() {
   const [count, setCount] = useState(0);
 
-  
-  const handleclick = useCallback(() => {
-    setCount(count +1);
-  }, [count]);
-  return (
-   <div>
-    <div>
-      <button onClick={handleclick}>Incement </button>
-      <p>Count: {count}</p>
-    </div>
-    <div>
-      <ChaildComponents 
-      buttonName ="Click me" 
-      handleclick ={handleclick}/>
-    </div>
+  const handleClick = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
-   </div>
-  )
+  return (
+    <div className="app">
+      <h1>useCallback + memo</h1>
+
+      <button className="btn" onClick={handleClick}>
+        Increment (Parent)
+      </button>
+
+      <p className="count">{count}</p>
+
+      <ChildComponents
+        buttonName="Increment (Child)"
+        handleClick={handleClick}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
