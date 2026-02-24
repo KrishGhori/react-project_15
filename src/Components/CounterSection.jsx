@@ -1,17 +1,38 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const CounterSection = React.memo(({ count, incrementCount }) => {
-  console.log("CounterSection rendered");
-
+const CounterSection = React.memo(({ count, dispatch }) => {
   return (
-    <div className="card">
+    <motion.div
+      className="card"
+      whileHover={{ scale: 1.03 }}
+    >
       <h2>Counter</h2>
-      <p className="count">{count}</p>
+      <motion.p
+        key={count}
+        className="count"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+      >
+        {count}
+      </motion.p>
 
-      <button className="btn primary" onClick={incrementCount}>
-        Increase Count
-      </button>
-    </div>
+      <div className="btn-group">
+        <button
+          className="btn primary"
+          onClick={() => dispatch({ type: "INCREMENT" })}
+        >
+          Increase
+        </button>
+
+        <button
+          className="btn danger"
+          onClick={() => dispatch({ type: "RESET" })}
+        >
+          Reset
+        </button>
+      </div>
+    </motion.div>
   );
 });
 

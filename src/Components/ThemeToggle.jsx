@@ -1,7 +1,8 @@
 import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
-const ThemeToggle = React.memo(({ theme, toggleTheme }) => {
-  console.log("ThemeToggle rendered");
+const ThemeToggle = React.memo(() => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="card">

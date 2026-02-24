@@ -1,31 +1,33 @@
-import { useCallback, useState } from "react";
+import { useReducer } from "react";
+import { motion } from "framer-motion";
+import { countReducer, initialState } from "../reducers/countReducer";
+import { useTheme } from "../context/ThemeContext";
+
 import CounterSection from "../Components/CounterSection";
 import ThemeToggle from "../Components/ThemeToggle";
 import InfoCard from "../Components/InfoCard";
+
 import "../App.css";
 
 function HomePage() {
-  const [count, setCount] = useState(0);
-  const [theme, setTheme] = useState("light");
-
-  const incrementCount = useCallback(() => {
-    setCount((prev) => prev + 1);
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }, []);
+  const [state, dispatch] = useReducer(countReducer, initialState);
+  const { theme } = useTheme();
 
   return (
-    <div className={`home ${theme}`}>
+    <motion.div
+      className={`home ${theme}`}
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       <h1>🏠 Home Page</h1>
 
-      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      <ThemeToggle />
 
-      <CounterSection count={count} incrementCount={incrementCount} />
+      <CounterSection count={state.count} dispatch={dispatch} />
 
-      <InfoCard count={count} theme={theme} />
-    </div>
+      <InfoCard count={state.count} theme={theme} />
+    </motion.div>
   );
 }
 
