@@ -39,3 +39,11 @@ src
 ├── index.css
 └── main.jsx
 ```
+## Install Dependencies
+```
+npm install
+```
+## Run the App
+```
+npm run dev
+```
